@@ -1,0 +1,12 @@
+*   Aby commandy níže fungovaly, tak musíte být pomocí cd v hlavní stránce Zradelna
+
+
+Vždycky si projekt aktualizujte, než na něm začnete pracovat pomocí následujícího commandu:
+    git pull
+
+
+pro nahrání svého progresu na github použijte následující commandy:
+    git add --all
+    git commit -a -m "Nějaká zpráva o změnách"
+    git push
+
