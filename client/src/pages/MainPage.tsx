@@ -11,7 +11,7 @@ const MainPage = () => {
     const currentDate = new Date();
     currentDate.setDate(currentDate.getDate() - currentDate.getDay() + 1); // Nastaví na začátek aktuálního týdne
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 52; i++) { // Generuje týdny na celý rok
       const startOfWeek = new Date(currentDate);
       const endOfWeek = new Date(currentDate);
       endOfWeek.setDate(endOfWeek.getDate() + 4); // Konec týdne (pátek)
@@ -52,42 +52,51 @@ const MainPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-[#fef2e0] to-[#F5A618] p-8">
+    <div className="min-h-screen bg-white p-8 text-[#333333]" style={{ fontFamily: 'Poppins, sans-serif' }}>
       {/* Hlavička */}
-      <div className="flex items-center justify-between bg-white shadow-xl p-5 rounded-2xl mb-6 transform hover:scale-105 transition-transform duration-300">
+      <div className="w-full bg-[#F5A618] text-white shadow-xl p-6 mb-6 flex justify-between items-center rounded-lg">
         <button
           onClick={handlePreviousWeek}
-          className="text-[#F5A618] hover:text-white bg-[#fef2e0] hover:bg-[#F5A618] rounded-full p-3 shadow-md transition-all duration-300"
+          className="text-[#F5A618] hover:bg-[#F5A618] hover:text-white bg-white rounded-full p-4 shadow-lg transition-all duration-300"
         >
           ◀
         </button>
-        <h1 className="text-3xl font-extrabold text-gray-800 tracking-wide">
+        <h1 className="text-3xl font-extrabold">
           {weeks[currentWeek].week}
         </h1>
         <button
           onClick={handleNextWeek}
-          className="text-[#F5A618] hover:text-white bg-[#fef2e0] hover:bg-[#F5A618] rounded-full p-3 shadow-md transition-all duration-300"
+          className="text-[#F5A618] hover:bg-[#F5A618] hover:text-white bg-white rounded-full p-4 shadow-lg transition-all duration-300"
         >
           ▶
         </button>
       </div>
 
+      {/* Odhlášení */}
+      <div className="flex justify-end mb-8">
+        <button
+          className="bg-[#F5A618] hover:bg-white text-white hover:text-[#F5A618] font-bold py-2 px-6 rounded-full shadow-lg transition-all duration-300"
+        >
+          Odhlásit se
+        </button>
+      </div>
+
       {/* Dny a jídla */}
-      <div className="grid grid-cols-1 gap-4">
+      <div className="flex flex-col gap-6 max-w-4xl mx-auto">
         {weeks[currentWeek].days.map((day, index) => (
           <div
             key={index}
-            className="bg-white shadow-2xl p-4 rounded-xl transform hover:translate-y-1 hover:shadow-lg transition-all duration-300"
+            className="bg-white shadow-lg p-6 rounded-lg transform hover:scale-105 hover:scale-[1.025] transition-all duration-300"
           >
-            <h2 className="text-xl font-bold text-[#F5A618] mb-4">{day}</h2>
-            <div className="space-y-3">
+            <h2 className="text-2xl font-bold text-[#F5A618] mb-4 text-center">{day}</h2>
+            <div className="space-y-4">
               {meals.map((meal, i) => (
                 <div
                   key={i}
-                  className="flex items-center justify-between bg-[#fef2e0] rounded-lg p-3 shadow-inner"
+                  className="flex flex-col sm:flex-row items-center justify-between bg-[#fff8e5] rounded-md p-4 shadow-inner hover:shadow-lg transition-all duration-300 gap-4"
                 >
-                  <span className="text-gray-800 font-semibold">{meal}</span>
-                  <div className="flex items-center space-x-3">
+                  <span className="text-lg font-medium text-center sm:text-left">{meal}</span>
+                  <div className="flex items-center justify-center sm:justify-end space-x-3">
                     <input
                       type="number"
                       min="0"
@@ -95,24 +104,24 @@ const MainPage = () => {
                       value={mealQuantities[day]?.[meal] || ""}
                       onChange={(e) => handleQuantityChange(day, meal, e.target.value)}
                       placeholder="0"
-                      className="w-12 border border-[#F5A618] rounded-lg text-center p-1 text-gray-800"
+                      className="w-16 bg-white border border-[#F5A618] rounded-lg text-center p-2"
                     />
                     <button
                       onClick={() => handleMealSelection(day, meal, "S sebou")}
-                      className={`px-3 py-1 rounded-lg text-white font-bold transition-all duration-300 ${
+                      className={`px-4 py-2 rounded-md text-white font-bold ${
                         mealSelections[day]?.[meal] === "S sebou"
                           ? "bg-[#F5A618] shadow-lg"
-                          : "bg-gray-300 hover:bg-[#F5A618]"
+                          : "bg-[#ddd] hover:bg-[#F5A618]"
                       }`}
                     >
                       S sebou
                     </button>
                     <button
                       onClick={() => handleMealSelection(day, meal, "Na místě")}
-                      className={`px-3 py-1 rounded-lg text-white font-bold transition-all duration-300 ${
+                      className={`px-4 py-2 rounded-md text-white font-bold ${
                         mealSelections[day]?.[meal] === "Na místě"
                           ? "bg-[#F5A618] shadow-lg"
-                          : "bg-gray-300 hover:bg-[#F5A618]"
+                          : "bg-[#ddd] hover:bg-[#F5A618]"
                       }`}
                     >
                       Na místě
@@ -120,11 +129,11 @@ const MainPage = () => {
                   </div>
                 </div>
               ))}
-              <div className="bg-[#fef2e0] p-3 rounded-lg text-gray-800 font-medium">
-                Polévka dne: 🍣 Dýňová polévka
+              <div className="bg-[#fff8e5] p-4 rounded-md shadow-inner text-center">
+                Polévka dne: 🥣 Dýňová polévka
               </div>
             </div>
-            <button className="mt-4 w-full bg-[#F5A618] text-white py-2 px-4 rounded-xl font-bold hover:bg-white hover:text-[#F5A618] border border-[#F5A618] transition-all duration-300">
+            <button className="mt-4 w-full bg-[#F5A618] text-white py-3 rounded-lg hover:bg-white hover:text-[#F5A618] border border-[#F5A618] shadow-lg transition-all duration-300">
               Potvrdit výběr
             </button>
           </div>
