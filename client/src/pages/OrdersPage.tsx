@@ -6,7 +6,7 @@ const OrdersPage = () => {
     return (
         <>
             <div>
-                Orders page
+                <h1 className="text-blue-500">Orders page</h1>
             </div>
         </>
     )
