@@ -7,7 +7,7 @@ const AdminPage = () => {
         <>
             <div>
                 Admin page
-                kokote
+                Text1
             </div>
         </>
     )
