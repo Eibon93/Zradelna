@@ -8,4 +8,5 @@
 *  Stejskal, Patočka, Fraško, Jankovský => Admin stránka
 *  Verner, Šimeček => API
 *  Kříž, Kopta => Login stránka
-*  Šíma, Poustecký, Kožíšková, Hanusová => Orders stránka
+*  Šíma, Poustecký => Orders stránka
+*  Kožíšková, Hanusová => User page
