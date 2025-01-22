@@ -16,9 +16,9 @@ createRoot(document.getElementById('root')!).render(
   <Routes>
     <Route path="/" element={<MainPage/>} />
     <Route path="/admin" element={<AdminPage/>} />
+    <Route path="/admin/orders" element={<OrdersPage/>} />
     <Route path="/login" element={<LoginPage/>} />
     <Route path="/user" element={<UserPage/>} />
-    <Route path="/orders" element={<OrdersPage/>} />
     <Route path="*" element={<><h1>ERROR 404</h1></>} />
 
   </Routes>
