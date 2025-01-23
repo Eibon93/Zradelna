@@ -1,6 +1,6 @@
 #  Žrádelna
 *  Objednávací systém pro KD Moskva restaurace developována IT.3.A
-*  (Pro žáky) => Když nevíte, jak pracovat s gitem, přijďte za Kordysem. 
+*  (Pro žáky) => Když nevíte, jak pracovat s gitem, přijďte za Kordysem, Dominikem, či Bárem
 
 
 *  Kordys, Hůla, Bár => backend
