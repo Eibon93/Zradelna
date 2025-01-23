@@ -8,7 +8,7 @@ const LoginPage = () => {
     return (
         <>
             <div>
-                Login page
+                Ahoj
             </div>
         </>
     )
