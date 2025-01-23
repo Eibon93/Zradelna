@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 
 const MainPage = () => {
   const [currentWeek, setCurrentWeek] = useState(0);
@@ -11,7 +11,8 @@ const MainPage = () => {
     const currentDate = new Date();
     currentDate.setDate(currentDate.getDate() - currentDate.getDay() + 1); // Nastaví na začátek aktuálního týdne
 
-    for (let i = 0; i < 52; i++) { // Generuje týdny na celý rok
+    for (let i = 0; i < 52; i++) {
+      // Generuje týdny na celý rok
       const startOfWeek = new Date(currentDate);
       const endOfWeek = new Date(currentDate);
       endOfWeek.setDate(endOfWeek.getDate() + 4); // Konec týdne (pátek)
@@ -52,7 +53,10 @@ const MainPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white p-8 text-[#333333]" style={{ fontFamily: 'Poppins, sans-serif' }}>
+    <div
+      className="min-h-screen bg-white p-8 text-[#333333]"
+      style={{ fontFamily: "Poppins, sans-serif" }}
+    >
       {/* Hlavička */}
       <div className="w-full bg-[#F5A618] text-white shadow-xl p-6 mb-6 flex justify-between items-center rounded-lg">
         <button
@@ -61,9 +65,7 @@ const MainPage = () => {
         >
           ◀
         </button>
-        <h1 className="text-3xl font-extrabold">
-          {weeks[currentWeek].week}
-        </h1>
+        <h1 className="text-3xl font-extrabold">{weeks[currentWeek].week}</h1>
         <button
           onClick={handleNextWeek}
           className="text-[#F5A618] hover:bg-[#F5A618] hover:text-white bg-white rounded-full p-4 shadow-lg transition-all duration-300"
@@ -74,9 +76,7 @@ const MainPage = () => {
 
       {/* Odhlášení */}
       <div className="flex justify-end mb-8">
-        <button
-          className="bg-[#F5A618] hover:bg-white text-white hover:text-[#F5A618] font-bold py-2 px-6 rounded-full shadow-lg transition-all duration-300"
-        >
+        <button className="bg-[#F5A618] hover:bg-white text-white hover:text-[#F5A618] font-bold py-2 px-6 rounded-full shadow-lg transition-all duration-300">
           Odhlásit se
         </button>
       </div>
@@ -88,21 +88,27 @@ const MainPage = () => {
             key={index}
             className="bg-white shadow-lg p-6 rounded-lg transform hover:scale-105 hover:scale-[1.025] transition-all duration-300"
           >
-            <h2 className="text-2xl font-bold text-[#F5A618] mb-4 text-center">{day}</h2>
+            <h2 className="text-2xl font-bold text-[#F5A618] mb-4 text-center">
+              {day}
+            </h2>
             <div className="space-y-4">
               {meals.map((meal, i) => (
                 <div
                   key={i}
                   className="flex flex-col sm:flex-row items-center justify-between bg-[#fff8e5] rounded-md p-4 shadow-inner hover:shadow-lg transition-all duration-300 gap-4"
                 >
-                  <span className="text-lg font-medium text-center sm:text-left">{meal}</span>
+                  <span className="text-lg font-medium text-center sm:text-left">
+                    {meal}
+                  </span>
                   <div className="flex items-center justify-center sm:justify-end space-x-3">
                     <input
                       type="number"
                       min="0"
                       max="10"
                       value={mealQuantities[day]?.[meal] || ""}
-                      onChange={(e) => handleQuantityChange(day, meal, e.target.value)}
+                      onChange={(e) =>
+                        handleQuantityChange(day, meal, e.target.value)
+                      }
                       placeholder="0"
                       className="w-16 bg-white border border-[#F5A618] rounded-lg text-center p-2"
                     />
