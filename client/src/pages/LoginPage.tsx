@@ -1,16 +1,8 @@
-
-
-
-const LoginPage = () => {
-
-
-
-    return (
-        <>
-            <div>
-                Ahoj
-            </div>
-        </>
-    )
+function LoginPage() {
+  return (
+    <>
+      <div>ghjj</div>
+    </>
+  );
 }
 export default LoginPage;
